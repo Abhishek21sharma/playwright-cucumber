@@ -29,3 +29,29 @@ Before & After --> it holds the page state and thus shared to all pages.. no nee
 to create their own copy of the pages
 
 check how a 'context' belongs to a page and how to work with them..
+cucumber after method have params which have info about what 'test run' has used config wise
+all of them are stored in 'result' and 'pickle' , this is similar to 'testinfo' in another test() method
+For better reporting use/download : npm i -D multiple-cucumber-html-report
+(also update the cucumber.json file --> format)
+(before this: working format: //"format": ["progress-bar", "html:cucumber-report.html"],)
+need to add custom logic for that to bring to live: go to their official github page and copy their code. It's similar to we add extent report so we need to do/add slight adjustments.
+once all set: run : npx ts-node ./file_name.ts
+
+also check how we create 'script' dependencies in package.json.
+to note: for every 'test' command , node will automatically go and sees if 'pretest' phase exists
+and run it before. But we need to explicity call posttest.
+also we used rimraf and mkdir : these pkgs helps to delete and create dir.
+to note: all of the scripts we added works with multiple-cucumber-html-report, which is not yet added
+
+Also, this framework works with pageFixture
+but we can use 'WorldConstructor' as well , which is using 'this'
+this.page --> this concept is explained in another frameworks check that too...
+
+also cucumber.json: along with the report :
+format: [
+"rerun: @rerun.txt"
+]
+
+to re-run re-tests features: updated the scripts..
+
+note:everything controls from cucumber.json file (or cucumber.js file) and not from playwright.config.ts since we changed it's behaviour..

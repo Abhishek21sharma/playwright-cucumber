@@ -3,7 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js"
+    "clean:reports": "rimraf test-result && mkdirp test-result",
+    "generate:report": "npx ts-node ./src/helper/reportGenerator.ts",
+    "pretest": "npm run clean:report",
+    "posttest": "npm run generate:report",
+    "execute:script": "cucumber-js test",
+    "test": "npm run execute:script || npm run posttest",
+    "execute:script:failed": "cucumber-js @rerun.txt",
+    "test:failed": "npm run execute:script:failed || npm run posttest"
   },
   "keywords": [],
   "author": "",
