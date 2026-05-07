@@ -55,9 +55,12 @@ format: [
 to re-run re-tests features: updated the scripts..
 
 note:everything controls from cucumber.json file (or cucumber.js file) and not from playwright.config.ts since we changed it's behaviour..
-
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<,>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 To run the tests from command line:
 npx playwright test --headed --workers=10
+
+to run 1 particular test
+npx playwright test "alertHandling.spec.ts" -g "Handling\s+Alert\s+@chromium$"
 
 Parallelism scenario based question::
 How to run let's say 10 tests in parallel across different available browsers
@@ -111,3 +114,11 @@ The goal is "Write Once, Run Everywhere."
 a.Keep tests browser-agnostic.
 b.Use the playwright.config.ts to define the browsers.
 c.Use CI Matrix orchestration to split the load across different hardware nodes. This ensures that a resource-heavy test in Chrome doesn't slow down a sensitive test in WebKit.
+
+<<<<<<<<------------------------------->>>>>>>>
+handling dialogues (alerts, confirms, prompts) using playwright..
+By default, Playwright automatically dismisses all dialogues so your test doesn't get stuck.
+to add this use playwright 'listner': using page.on('dialog', )
+if we want to listen just once and then stop the listner use: page.once('dialog', ...)
+as page.on() keeps listing until the page stays in.
+(check alertHandling.spec.ts file)
