@@ -1,6 +1,8 @@
 import { test, expect } from "@playwright/test";
 
 test("multiple windows handling ", async ({ page, context }) => {
+//EVENT listner concept
+
   //In Playwright, handling multiple windows (or tabs) is handled through
   // the concept of Pages within a BrowserContext.
   //  Unlike older frameworks that require "switching focus" commands,
