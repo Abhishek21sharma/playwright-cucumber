@@ -3,6 +3,7 @@
     //"module": "commonjs",
     "module": "commonjs",
     "ignoreDeprecations": "6.0",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "resolveJsonModule": true
   }
 }
