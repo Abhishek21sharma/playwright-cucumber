@@ -36,7 +36,23 @@ test("update in better way", async () => {
 
   //get the object and convert to string and then parse again to JSON
   const articleRequest = JSON.parse(JSON.stringify(articleRequestPayload));
+
+  //use structureclone instead of json.parse etc..
+  const articleRequest1 = structuredClone(articleRequestPayload);
   //now update just this and use in POST
 
   articleRequest.article.title = "updated title";
 });
+
+[
+  { username: "dd", usernameErrorMsg: "is too short! " },
+  { username: "ddd", usernameErrorMsg: "" },
+  { username: "ddddddddddddd", usernameErrorMsg: "is too long! " },
+].forEach(({ username, usernameErrorMsg }) => {
+  //look how we updated the test description to make them more generic
+  test(`Running test with different data set..  ${username}`, async ({
+    request,
+    page,
+  }) => {});
+});
+//test data generator..
